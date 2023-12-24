@@ -1,14 +1,22 @@
-import { AppProps } from 'next/app';
+'use client';
+
 import { ThemeProvider } from 'styled-components';
 
 import { GlobalStyles } from '../styles/global-styles';
 import { theme } from '../styles/theme';
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Component {...pageProps} />
+      <html lang="pt-BR">
+        <title>Model Project NextJs</title>
+        <body>{children}</body>
+      </html>
     </ThemeProvider>
   );
 }
